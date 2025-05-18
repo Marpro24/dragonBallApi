@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-const SearchBar = () => {
+const SearchBar = ({onSearch}) => {
   const [name, setName] = useState("");
   const [minKi, setMinKi] = useState("");
   const [maxKi, setMaxKi] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    onSearch({name, minKi, maxKi})
   };
 
   return (
