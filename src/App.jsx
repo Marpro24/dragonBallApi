@@ -21,9 +21,20 @@ function App() {
     fetchCharacters();
   }, []);
 
-  const handleSearch = () => {
+  const handleSearch = ({ name, minKi, maxKi }) => {
     let searchResult = characters;
-   
+
+    if (name) {
+      searchResult = searchResult.filter((item) =>
+        item.name.toLowerCase().includes(name.toLowerCase())
+      );
+    }
+
+    if (minKi && maxKi) {
+      searchResult = searchResult.filter(
+        (item) => item.ki >= parseInt(minKi) && item.ki <= parseInt(maxKi)
+      );
+    }
     setSearchedCharacters(searchResult);
   };
 
@@ -32,7 +43,6 @@ function App() {
       <h1 className="main-page-title">Busca tu personaje favorito</h1>
 
       <SearchBar onSearch={handleSearch} />
-
       {searchedCharacters.map((character) => (
         <CharacterCard key={character.id} character={character} />
       ))}
