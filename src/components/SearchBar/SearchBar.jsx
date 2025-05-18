@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./SearchBar.css"
 
 const SearchBar = ({onSearch}) => {
   const [name, setName] = useState("");
@@ -11,8 +12,8 @@ const SearchBar = ({onSearch}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="mb-3">
+    <form className="form-container" onSubmit={handleSubmit}>
+      <div className="mb-3 ">
         <label htmlFor="name" className="form-label">
           Buscar por nombre
         </label>
@@ -22,7 +23,7 @@ const SearchBar = ({onSearch}) => {
           placeholder="Introduce un nombre"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="form-control"
+          className="form-control border-primary"
         />
 
         <label htmlFor="minKi" className="form-label">
@@ -34,7 +35,7 @@ const SearchBar = ({onSearch}) => {
           placeholder="De"
           value={minKi}
           onChange={(e) => setMinKi(e.target.value)}
-          className="form-control"
+          className="form-control border-primary"
         />
 
         <label htmlFor="maxKi" className="form-label"></label>
@@ -44,7 +45,7 @@ const SearchBar = ({onSearch}) => {
           placeholder="A"
           value={maxKi}
           onChange={(e) => setMaxKi(e.target.value)}
-          className="form-control"
+          className="form-control border-primary"
         />
 
         <button type="submit" className="btn btn-primary">
